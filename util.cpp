@@ -16,14 +16,24 @@ std::string convToLower(std::string src)
 std::set<std::string> parseStringToWords(string rawWords)
 {
 
+    set<string> finalWord;
+    int j = 0;
+    for (unsigned int i = 0; i < rawWords.size(); i++)
+    {
+        if( rawWords[i] == ' ' || ispunct(rawWords[i]) != 0)
+        {
+						finalWord.insert(convToLower(rawWords.substr(j, i - j)));
+            j = i + 1;
+				}
 
+				else if(i == rawWords.size()-1)
+				{
+						finalWord.insert(convToLower(rawWords.substr(j, i - j + 1)));
+        }
+				//"men shirt " -> men shirt
+    }
 
-
-
-
-
-
-
+    return finalWord;
 
 }
 
